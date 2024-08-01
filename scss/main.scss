@@ -1,15 +1,15 @@
 @use "variables" as v;
 @import url('reset');
 
-
+@mixin gradienta($deg: 100deg) {
+  background: linear-gradient($deg,
+      v.$color-peach,
+      v.$color-voilet);
+}
 
 body {
   font-family: "Teachers", sans-serif;
-  background: linear-gradient(106.5deg,
-  v.$color-peach,
-  v.$color-voilet);
-      
-      
+  @include gradienta();
 
   animation: {
     name: golgol;
@@ -21,33 +21,25 @@ body {
 }
 
 ::selection {
-  background:v.$color-red;
+  background: v.$color-red;
   color: white;
 }
 
 @keyframes golgol {
   0% {
-    background: linear-gradient(20deg,
-        v.$color-peach,
-        v.$color-voilet);
+    @include gradienta(20deg);
   }
 
   25% {
-    background: linear-gradient(80deg,
-        v.$color-peach,
-        v.$color-voilet);
+    @include gradienta(80deg);
   }
 
   50% {
-    background: linear-gradient(120deg,
-        v.$color-peach,
-        v.$color-voilet);
+    @include gradienta(120deg);
   }
 
   100% {
-    background: linear-gradient(160deg,
-        v.$color-peach,
-        v.$color-voilet);
+    @include gradienta(160deg);
   }
 }
 
@@ -85,12 +77,13 @@ header {
     }
 
   }
+
   ul {
     list-style: none;
     text-align: right;
     color: red;
     cursor: pointer;
-  
+
     li:first-child {
       font-weight: 600;
       margin-bottom: 25px;
@@ -106,7 +99,7 @@ header {
 
 
 /* Main */
-main{
+main {
   h1 {
     font-size: 70px;
     font-weight: 400;
